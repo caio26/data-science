@@ -1,0 +1,41 @@
+Análise de dados do LinkedIn
+Este código tem como objetivo analisar dados de conexões no LinkedIn e suas mensagens para extrair informações relevantes sobre os contatos e gerar visualizações gráficas.
+
+Pré-requisitos
+Antes de executar o código, é necessário ter instalado:
+
+Python 3
+Bibliotecas: pandas, plotly, numpy, unicodedata e faker
+Arquivos necessários
+O código utiliza os seguintes arquivos:
+
+Connections.xlsx: planilha contendo as informações das conexões do LinkedIn.
+Invitations.csv: arquivo CSV contendo informações sobre as mensagens de convite enviadas e recebidas no LinkedIn.
+messages.csv: arquivo CSV contendo as mensagens trocadas com as conexões do LinkedIn.
+Funcionamento do código
+O código consiste em diversas etapas:
+
+Leitura e limpeza dos dados de conexões.
+
+A biblioteca pandas é utilizada para ler a planilha Connections.xlsx e realizar a limpeza dos dados, removendo a coluna "Email Address" e linhas com valores nulos.
+A função remove_acentos, da biblioteca unicodedata, é utilizada para remover acentos dos valores da coluna "Position".
+A biblioteca faker é utilizada para gerar nomes falsos para substituir os nomes reais dos contatos, com o objetivo de preservar a privacidade.
+Leitura e limpeza dos dados de mensagens.
+
+A biblioteca pandas é utilizada para ler o arquivo CSV messages.csv e realizar a limpeza dos dados, removendo linhas com valores nulos.
+Visualização dos dados de conexões através de gráficos.
+
+A biblioteca plotly.express é utilizada para gerar visualizações gráficas dos dados de conexões.
+É gerado um gráfico de dispersão mostrando a data em que cada conexão foi feita.
+É gerado um gráfico de linha mostrando o número de novas conexões feitas por dia.
+Análise dos convites recebidos pelos contatos.
+
+A biblioteca pandas é utilizada para ler o arquivo CSV Invitations.csv e realizar a limpeza dos dados, removendo linhas com valores nulos e mantendo apenas os convites recebidos (Direction = 'INCOMING').
+É adicionada uma coluna "Company" aos dados de convites, preenchida com o nome da empresa do contato que enviou o convite, quando disponível.
+É gerado um arquivo CSV contendo os dados de convites.
+Análise de clusters de cargos.
+
+É criada uma variável para conter todos os cargos presentes na base de dados.
+É definido um limite para a distância de Jaccard (30%) e é criado um dicionário chamado clusters. Esse dicionário é preenchido com pares de cargos que possuem uma distância menor ou igual ao limite definido.
+É criada uma lista de clusters com pelo menos dois cargos, e a partir daí, é criado um novo dicionário chamado cluster_contatos, onde cada cluster é mapeado para a lista de contatos que possuem esse cluster como cargo.
+É feita uma impressão dos resultados para cada cluster_contatos encontrado. Isso inclui uma lista de cargos no grupo, os termos comuns a todos os cargos no grupo e a

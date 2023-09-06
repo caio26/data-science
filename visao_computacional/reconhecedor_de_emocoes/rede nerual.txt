@@ -1,0 +1,29 @@
+Este é um código em Python para treinar uma rede neural convolucional (CNN) para classificar emoções em imagens de rostos humanos. Aqui está o passo a passo:
+
+Importação das bibliotecas necessárias: O código começa com a importação das bibliotecas necessárias para o treinamento da CNN. São elas: zipfile para descompactação de arquivos, tensorflow e keras para construção da rede neural, cv2 para leitura e pré-processamento de imagens, os para manipulação de diretórios e arquivos, numpy para manipulação de matrizes e random para aleatorização.
+
+Carregamento dos dados: O código assume que os dados estão armazenados em uma pasta chamada "train", e usa a função ImageDataGenerator do tensorflow.keras.preprocessing para criar um gerador de imagens a partir dos dados. As imagens são redimensionadas para um tamanho de 48x48 pixels, normalizadas e aumentadas aleatoriamente com rotações, reflexões horizontais e zoom. A classe da imagem é determinada pelo nome da subpasta na qual ela está armazenada dentro da pasta "train". O gerador de imagens é então usado para alimentar a CNN durante o treinamento.
+
+Definição da arquitetura da CNN: A CNN é criada usando o modelo Sequential do tensorflow.keras.models. A arquitetura inclui várias camadas de convolução, normalização e pooling, seguidas de duas camadas densas e uma camada de saída softmax. Cada camada é adicionada ao modelo usando o método add, com os parâmetros apropriados para cada tipo de camada. A função de ativação ReLU é usada nas camadas convolucionais e densas, exceto na camada de saída, que usa softmax para produzir uma distribuição de probabilidade sobre as classes.
+
+Compilação e treinamento da CNN: Depois que a arquitetura da CNN é definida, ela é compilada usando o método compile, com o otimizador Adam, a função de perda categorical_crossentropy e a métrica de acurácia. Em seguida, o modelo é treinado usando o método fit no gerador de imagens criado anteriormente, com 80 épocas de treinamento. Durante o treinamento, a CNN ajusta seus pesos para minimizar a função de perda e melhorar sua capacidade de classificar imagens de emoções faciais.
+
+Salvando o modelo: Após o treinamento, o modelo é salvo em um arquivo JSON usando o método to_json do modelo do Keras e gravado em disco. Em seguida, o modelo é salvo em um arquivo HDF5 usando o método save_model do Keras.
+
+Avaliação do modelo: O código também contém algumas linhas para avaliar o modelo treinado em um conjunto de dados de teste, que está comentado para que não seja executado. Se for descomentado, o conjunto de teste pode ser carregado usando um gerador de imagens semelhante ao usado para o conjunto de treinamento, e o modelo pode ser avaliado usando o método evaluate. Além disso, o código inclui algumas linhas para fazer previsões sobre o conjunto de teste e calcular uma matriz deconfusão e um relatório de classificação.
+
+Para fazer previsões sobre o conjunto de teste, descomente as seguintes linhas de código:
+
+less
+Copy code
+#previsoes = network.predict(dataset_teste)
+#previsoes
+
+#previsoes = np.argmax(previsoes, axis = 1)
+#previsoes
+
+#from sklearn.metrics import confusion_matrix
+#cm = confusion_matrix(dataset_teste.classes, previsoes)
+
+#from sklearn.metrics import classification_report
+#print(classification_report(dataset_teste.classes, previsoes))

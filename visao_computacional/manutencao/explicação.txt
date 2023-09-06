@@ -1,0 +1,27 @@
+O código tem como objetivo treinar um modelo de classificação de imagens utilizando a arquitetura ResNet50 pré-treinada. Vamos percorrer o código passo a passo:
+
+Importação de bibliotecas: São importadas várias bibliotecas necessárias para realizar as tarefas de processamento de dados, visualização, manipulação de imagens e criação do modelo de classificação.
+
+Carregamento dos dados: Dois arquivos CSV são carregados usando Pandas: "defect_and_no_defect.csv" e "train.csv". Esses arquivos contêm informações sobre as imagens e as máscaras correspondentes.
+
+Exploração dos dados: Diversas operações são realizadas para explorar os dados, como verificar a forma dos DataFrames, contar o número de imagens únicas, verificar a distribuição das classes, contar o número de máscaras encontradas, etc.
+
+Visualização das imagens e máscaras: Um loop é usado para carregar e exibir 10 imagens do conjunto de dados, juntamente com as respectivas classes. Outro loop é usado para criar as máscaras correspondentes às imagens e exibi-las.
+
+Divisão do conjunto de dados: O conjunto de dados é dividido em conjuntos de treinamento e teste usando a função train_test_split().
+
+Pré-processamento e aumento de dados: Um objeto ImageDataGenerator é criado para realizar o pré-processamento e o aumento de dados, incluindo a normalização dos valores de pixel.
+
+Criação dos geradores de dados: São criados geradores de dados usando o método flow_from_dataframe() para treinamento, validação e teste do modelo. Os diretórios, colunas de entrada e saída, tamanho do lote e outras configurações são especificados.
+
+Definição do modelo: A arquitetura da ResNet50 é importada e utilizada como base. Camadas personalizadas são adicionadas ao topo do modelo. A camada final usa uma ativação sigmoidal para classificação binária.
+
+Compilação e treinamento do modelo: O modelo é compilado com otimizador Adam e função de perda de entropia cruzada binária. O treinamento é realizado usando os geradores de dados, callbacks e um número especificado de épocas.
+
+Salvando e carregando o modelo: O modelo é salvo em formato JSON e os melhores pesos são salvos em um arquivo. Em seguida, o modelo é carregado a partir dos arquivos salvos.
+
+Fazendo previsões: O modelo é usado para fazer previsões no conjunto de teste e as previsões são arredondadas para obter classes preditas.
+
+Avaliação das previsões: As previsões são comparadas com as classes reais para calcular a acurácia e criar um DataFrame com os resultados. As previsões incorretas são analisadas e classificadas como falsos positivos ou falsos negativos.
+
+Visualização de imagens aleatórias com previsões: Algumas imagens aleatórias são selecionadas e o modelo faz previsões sobre elas. As imagens são exibidas com os títulos contendo a classe real e a classe predita.

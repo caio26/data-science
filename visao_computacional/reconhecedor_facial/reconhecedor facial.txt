@@ -1,0 +1,29 @@
+Primeiramente, o código importa algumas bibliotecas que serão utilizadas, como a OpenCV (cv2), a face_recognition, a numpy e a datetime. Ele também utiliza a biblioteca pyautogui e ImageGrab para capturar a tela do computador.
+
+A variável dirPath é definida como o caminho onde as imagens dos jogadores estão armazenadas.
+
+Uma lista vazia chamada jogadores é criada para armazenar as imagens dos jogadores e outra lista vazia chamada classNames é criada para armazenar os nomes dos jogadores.
+
+O código utiliza a função os.listdir() para percorrer o diretório e pegar cada imagem de cada vez. Ele adiciona cada imagem na lista jogadores e adiciona o nome da imagem (sem a extensão) na lista classNames.
+
+A função findEncodings(jogadores) é criada para retornar uma lista com múltiplos valores, extraindo características únicas de cada imagem. Essa função utiliza a biblioteca face_recognition para codificar cada imagem e adiciona esses códigos na lista encodeList.
+
+A função markAttendance(name) é criada para salvar o nome e o horário do reconhecimento facial em um arquivo CSV. Essa função lê as linhas do arquivo CSV existente, cria uma lista com todos os nomes já presentes no arquivo, verifica se o nome reconhecido já está na lista e, se não estiver, adiciona o nome e o horário atual na lista.
+
+A função captureScreen(bbox) é criada para capturar a tela do computador. Ela recebe uma tupla de coordenadas para definir a área da tela que será capturada. A função utiliza a biblioteca pyautogui para capturar a tela e retorna a imagem como um array.
+
+A variável encodeListKnown é definida como a lista de codificações de cada imagem dos jogadores, utilizando a função findEncodings(jogadores).
+
+O código entra em um loop while infinito para capturar continuamente a tela e realizar o reconhecimento facial.
+
+Dentro do loop while, a função captureScreen() é chamada para capturar a tela do computador e a imagem é redimensionada para 1/4 do seu tamanho original para acelerar o processo.
+
+A função face_recognition.face_locations(imgS) é utilizada para localizar as faces na imagem redimensionada. A função face_recognition.face_encodings(imgS,facesCurFrame) é utilizada para codificar as faces localizadas.
+
+O loop for encodeFace,faceLoc in zip(encodesCurFrame,facesCurFrame) é utilizado para percorrer cada face encontrada na imagem e realizar a comparação com as imagens já codificadas.
+
+A função face_recognition.compare_faces(encodeListKnown,encodeFace) é utilizada para comparar as codificações das faces do frame atual com as codificações da lista de jogadores. O resultado da comparação é armazenado na lista matches
+
+A função face_recognition.face_distance(encodeListKnown,encodeFace) é utilizada para calcular a distância entre a face sendo mostrada e as faces armazenadas na lista encodeListKnown. Essa distância é calculada utilizando a técnica de distância euclidiana entre as características faciais da face sendo mostrada e as características faciais das faces armazenadas na lista encodeListKnown.
+
+O resultado da distância calculada é armazenado na lista faceDis, que contém a distância entre a face sendo mostrada e cada uma das faces armazenadas na lista encodeListKnown. A lista faceDis é então utilizada para determinar qual das faces armazenadas na lista encodeListKnown é mais parecida com a face sendo mostrada no momento. Para isso, é utilizado o índice do menor valor da lista faceDis, que indica qual das faces armazenadas na lista encodeListKnown está mais próxima da face sendo mostrada. Esse índice é então utilizado para identificar o nome da pessoa correspondente à face armazenada na lista classNames.

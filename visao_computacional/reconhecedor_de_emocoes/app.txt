@@ -1,0 +1,16 @@
+Importe os módulos necessários, incluindo TensorFlow, OpenCV e NumPy.
+Carregue o modelo salvo em disco usando o método model_from_json() do Keras e o método load_weights() para carregar os pesos salvos em um arquivo HDF5.
+Compile o modelo usando o otimizador Adam e a função de perda categorical_crossentropy.
+Defina uma lista de emoções a serem detectadas.
+Carregue um classificador de detecção de faces pré-treinado em disco usando o método CascadeClassifier() do OpenCV.
+Crie um objeto VideoCapture() para acessar o vídeo da webcam.
+Inicie um loop while para ler continuamente quadros do vídeo.
+Dentro do loop while, detecte todas as faces presentes no quadro atual usando o classificador pré-treinado.
+Para cada face detectada, extraia a região de interesse (ROI) da imagem e redimensione-a para as dimensões esperadas pelo modelo.
+Normalize os valores dos pixels para o intervalo [0, 1].
+Adicione uma dimensão extra para indicar o tamanho do batch.
+Realize a classificação da imagem utilizando o modelo pré-treinado.
+Obtenha o índice da emoção com maior probabilidade.
+Escreva o nome da emoção sobre o retângulo em volta da face detectada.
+Exiba o quadro atual na janela com o nome "tela".
+Verifique se a tecla "Esc" foi pressionada para encerrar o loop while e finalizar o programa.
