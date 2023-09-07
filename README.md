@@ -6,7 +6,7 @@ Bem-vindo ao Repositório de Projetos de Ciência de Dados! Este repositório co
 
 O repositório está estruturado da seguinte maneira:
 
-1. **Automação**: Esta pasta contém projetos relacionados à automação de tarefas de ciência de dados, incluindo scripts e pipelines para automatizar processos de coleta, limpeza e análise de dados.
+1. **Automação**: Esta pasta contém projetos relacionados à automação de tarefas de ciência de dados.
 
 2. **Clusterização**: Aqui você encontrará projetos que exploram técnicas de clusterização para agrupar dados semelhantes. Os notebooks e scripts nesta pasta demonstram como aplicar algoritmos de clusterização como o K-Means, DBSCAN e Hierarchical Clustering.
 
