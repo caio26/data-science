@@ -8,7 +8,7 @@ O repositório está estruturado da seguinte maneira:
 
 1. **Automação**: Esta pasta contém projetos relacionados à automação de tarefas de ciência de dados.
 
-2. **Clusterização**: Aqui você encontrará projetos que exploram técnicas de clusterização para agrupar dados semelhantes. Os notebooks e scripts nesta pasta demonstram como aplicar algoritmos de clusterização como o K-Means, DBSCAN e Hierarchical Clustering.
+2. **Clusterização**: Aqui você encontrará projetos que exploram técnicas de clusterização para agrupar dados semelhantes. Os notebooks e scripts nesta pasta demonstram como aplicar algoritmos de clusterização.
 
 3. **Classificação**: Esta categoria contém projetos relacionados à classificação de dados. Você encontrará notebooks e scripts que abordam tarefas de classificação binária e multiclasse, utilizando algoritmos como Árvores de Decisão, Random Forest,entre outros.
 
